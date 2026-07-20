@@ -19,7 +19,7 @@ INSERT INTO products (name, description, price, category, stock, image_url) VALU
 ('White Wheat Flour', 'All-purpose wheat flour for baking, 1 kg', 8.50, 'ingredients', 50, '/images/White-Wheat-Flour.jpg'),
 ('Premium Vanilla Extract', 'Pure Madagascar vanilla extract, 50 ml', 42.00, 'ingredients', 20, '/images/Premium-Vanilla-Extract.jpg'),
 ('Dark Chocolate 70%', 'Belgian dark chocolate coins for baking, 1 kg', 65.00, 'ingredients', 30, '/images/Dark-Chocolate-70%.jpg'),
-('Milk Chocolate 34%', 'High-quality milk chocolate coins for melting, 1 kg', 62.00, 'ingredients', 25, '/images/chocolate-milk.jpg'),
+('Milk Chocolate 34%', 'High-quality milk chocolate coins for melting, 1 kg', 62.00, 'ingredients', 25, '/images/Milk-Chocolate-34%.jpg'),
 ('White Chocolate 30%', 'Rich white chocolate coins for baking and coating, 1 kg', 68.00, 'ingredients', 20, '/images/White-Chocolate-30%.jpg'),
 ('Active Dry Yeast', 'Vacuum-packed dry yeast for yeast doughs, 500g', 15.00, 'ingredients', 40, '/images/Active-Dry-Yeast.jpg'),
 ('Red Gel Food Coloring', 'Concentrated gel food coloring for creams and fondant', 18.00, 'ingredients', 25, '/images/Red-Gel-Food-Coloring.jpg'),

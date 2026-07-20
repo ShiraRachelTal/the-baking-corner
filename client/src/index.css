@@ -1,111 +1,72 @@
 :root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
-
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
-
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
-  color-scheme: light dark;
-  color: var(--text);
-  background: var(--bg);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
-  @media (max-width: 1024px) {
-    font-size: 16px;
-  }
+  /* צבעי רקע - קרם חמים ואלגנטי במקום לבן בוהק */
+  --bg-primary: #FAF9F6; 
+  --bg-card: #FFFFFF;
+  
+  /* צבעי טקסט - אפור פחם / חום כהה עדין לעין */
+  --text-main: #33312E; 
+  --text-muted: #7A7571;
+  
+  /* צבע הדגשה (למשל לכפתורים או למחירים) - זהב/מוקה עדין */
+  --accent-color: #C1A68D; 
+  --accent-hover: #A88F75;
+  
+  /* גבולות דקים */
+  --border-light: #EBE5DF;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-  }
-
-  #social .button-icon {
-    filter: invert(1) brightness(2);
-  }
-}
-
+/* הגדרות בסיס לכל האפליקציה */
 body {
+  background-color: var(--bg-primary);
+  color: var(--text-main);
+  /* פונט נקי לטקסט רגיל (רצוי לייבא את Montserrat מ-Google Fonts) */
+  font-family: 'Montserrat', sans-serif; 
   margin: 0;
+  padding: 0;
 }
 
-#root {
-  width: 1126px;
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
-}
-
-h1,
-h2 {
-  font-family: var(--heading);
+/* סגנון בוטיק לכותרות */
+h1, h2, h3, .product-title {
+  /* פונט אלגנטי לכותרות (רצוי לייבא את Playfair Display) */
+  font-family: 'Playfair Display', serif; 
   font-weight: 500;
-  color: var(--text-h);
+  letter-spacing: 0.5px;
+  color: var(--text-main);
 }
 
-h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
-  }
-}
-h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
-  }
-}
-p {
-  margin: 0;
+/* עיצוב כרטיסיית מוצר שמשדרת איכות */
+.product-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-light);
+  /* פינות עדינות מאוד - לא עגולות מדי */
+  border-radius: 4px; 
+  padding: 24px;
+  /* הרבה שטח לבן (Whitespace) כדי לא לחנוק את התוכן */
+  margin: 16px; 
+  transition: all 0.3s ease;
 }
 
-code,
-.counter {
-  font-family: var(--mono);
-  display: inline-flex;
-  border-radius: 4px;
-  color: var(--text-h);
+/* אפקט עדין כשעוברים עם העכבר */
+.product-card:hover {
+  border-color: var(--accent-color);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
 }
 
-code {
-  font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
-  background: var(--code-bg);
+/* כפתור בוטיקי נקי */
+.btn-primary {
+  background-color: transparent;
+  color: var(--text-main);
+  border: 1px solid var(--text-main);
+  padding: 10px 24px;
+  border-radius: 0; /* כפתור מרובע נראה רשמי ונקי יותר */
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase; /* אותיות רישיות באנגלית משדרות יוקרה */
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: var(--text-main);
+  color: #FFFFFF;
 }
