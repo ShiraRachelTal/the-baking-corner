@@ -34,24 +34,6 @@ h1, h2, h3, .product-title {
   color: var(--text-main);
 }
 
-/* עיצוב כרטיסיית מוצר שמשדרת איכות */
-.product-card {
-  background-color: var(--bg-card);
-  border: 1px solid var(--border-light);
-  /* פינות עדינות מאוד - לא עגולות מדי */
-  border-radius: 4px; 
-  padding: 24px;
-  /* הרבה שטח לבן (Whitespace) כדי לא לחנוק את התוכן */
-  margin: 16px; 
-  transition: all 0.3s ease;
-}
-
-/* אפקט עדין כשעוברים עם העכבר */
-.product-card:hover {
-  border-color: var(--accent-color);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
-}
-
 /* כפתור בוטיקי נקי */
 .btn-primary {
   background-color: transparent;
@@ -69,4 +51,231 @@ h1, h2, h3, .product-title {
 .btn-primary:hover {
   background-color: var(--text-main);
   color: #FFFFFF;
+}
+/* =========================================
+   Navbar, Hero, Hover, Footer
+   ========================================= */
+
+/* סרגל ניווט (Navbar) */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  background-color: #fdfbf7; /* צבע קרם עדין */
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.navbar .logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.navbar .cart {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+  background-color: #333;
+  color: white;
+  padding: 8px 15px;
+  border-radius: 20px;
+  transition: background-color 0.3s;
+}
+
+.navbar .cart:hover {
+  background-color: #555;
+}
+
+/* באנר אווירה עליון (Hero Banner) */
+.hero-banner {
+  /* תמונת אפייה יפה מ-Unsplash כרקע */
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://images.unsplash.com/photo-1556910103-1c02745a8e2f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+  background-size: cover;
+  background-position: center;
+  height: 350px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+}
+
+.hero-content h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.5rem;
+  margin: 0 0 10px 0;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.hero-content p {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.2rem;
+  margin: 0;
+  letter-spacing: 1px;
+}
+
+/* =========================================
+   product
+   ========================================= */
+/* מיכל התמונה */
+.image-container {
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+}
+
+   /* סידור התמונות כדי שלא ייחתכו */
+.product-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* שונה מ-cover כדי להציג תמונה מלאה */
+  background-color: #fafafa; /* רקע עדין למקרה שהתמונה צרה/רחבה מדי */
+  transition: transform 0.5s ease; /* אנימציה חלקה של חצי שנייה */
+}
+
+/* המעטפת הראשית של הכרטיסייה */
+.product-card {
+  position: relative; 
+  overflow: hidden; 
+  display: flex;
+  flex-direction: column;
+  height: 100%; 
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: 4px; 
+  transition: all 0.3s ease; /* מאחד את כל מעברי האנימציה (צבע, תזוזה והצללה) */
+}
+
+/* אפקט ריחוף על הכרטיסייה כולה (הקפצה + שינוי צבע גבול + הצללה) */
+.product-card:hover {
+  transform: translateY(-5px); 
+  border-color: var(--accent-color);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+/* אפקט זום לתמונה בעת ריחוף על הכרטיסייה */
+.product-card:hover .product-image {
+  transform: scale(1.08);
+  transition: transform 0.3s ease; /* הוספתי לך כאן transition כדי שהזום יהיה חלק ולא קופצני */
+}
+
+/* אזור הטקסט (כותרת, תיאור, מחיר) */
+.product-info {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* החלק הקריטי שדוחף את הכפתור למטה */
+}
+
+/* כפתור "הוסף לסל" */
+.add-to-cart-btn {
+  margin-top: auto; /* מצמיד את הכפתור הכי למטה שאפשר */
+}
+
+
+
+/* תגית על המוצר */
+.badge {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background-color: #d4af37; /* צבע זהב */
+  color: white;
+  padding: 5px 12px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  font-family: 'Montserrat', sans-serif;
+  border-radius: 4px;
+  z-index: 10;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+/* חלק תחתון (Footer) */
+.footer {
+  background-color: #2c2c2c;
+  color: #eee;
+  text-align: center;
+  padding: 40px 20px;
+  margin-top: 80px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.9rem;
+}
+/* =========================
+   תוספות עבור לוגו, ותפריט
+   ========================= */
+
+/* עיצוב הלוגו בנאב-בר */
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: #333;
+}
+
+.logo-icon {
+  width: 32px;
+  height: 32px;
+}
+
+/* עיצוב תפריט הניווט הנפתח */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropbtn {
+  background: none;
+  border: none;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #333;
+  cursor: pointer;
+  padding: 10px 0;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  min-width: 200px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.1);
+  z-index: 1;
+  border-radius: 8px;
+  top: 100%;
+  right: 0;
+  overflow: hidden;
+}
+
+.dropdown-content a {
+  color: #333;
+  padding: 15px;
+  text-decoration: none;
+  display: block;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.95rem;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.dropdown-content a:hover {
+  background-color: #fdfbf7;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
 }
