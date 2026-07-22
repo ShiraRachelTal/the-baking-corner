@@ -96,6 +96,51 @@ app.post('/api/products', async (req, res) => {
   }
 });
 
+// PUT: Update an existing product
+app.put('/api/products/:id', async (req, res) => {
+    const { id } = req.params;
+    const { name, price, stock, category, image_url, description } = req.body;
+
+    try {
+        // SQL query to update the product fields
+        const updateQuery = `
+            UPDATE products 
+            SET name = ?, price = ?, stock = ?, category = ?, image_url = ?, description = ? 
+            WHERE id = ?
+        `;
+        
+        // Execute the query using your database pool
+        const [result] = await pool.query(updateQuery, [name, price, stock, category, image_url, description, id]);
+
+        // Check if a row was actually updated
+        if (result.affectedRows === 0) {
+            return res.status(404).json({ error: 'Product not found' });
+        }
+
+        res.status(200).json({ message: 'Product updated successfully' });
+    } catch (error) {
+        console.error('Error updating product in DB:', error);
+        res.status(500).json({ error: 'Failed to update product' });
+    }
+});
+
+// DELETE: Delete a product
+app.delete('/api/products/:id', async (req, res) => {
+  const { id } = req.params;
+  
+  try {
+    const [result] = await pool.query('DELETE FROM products WHERE id = ?', [id]);
+    
+    if (result.affectedRows === 0) {
+      return res.status(404).json({ error: 'Product not found' });
+    }
+    res.json({ message: 'Product deleted successfully' });
+  } catch (error) {
+    console.error('Error deleting product:', error.message);
+    res.status(500).json({ error: 'Failed to delete product' });
+  }
+});
+
 // ==========================================
 // SERVER LISTENER
 // ==========================================
